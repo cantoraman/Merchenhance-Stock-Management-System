@@ -13,8 +13,8 @@ CREATE TABLE items (
   name VARCHAR(255),
   description VARCHAR(255),
   tag VARCHAR(144),
-  cost INT4,
-  price INT4,
+  cost INT8,
+  price INT8,
   stock_level INT4,
   stock_low INT4,
   stock_medium INT4
