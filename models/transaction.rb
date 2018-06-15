@@ -51,4 +51,8 @@ class Transactions
     return transaction_data.map { |transaction| Transaction.new(transaction) }
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM transactions;"
+    SqlRunner.run(sql)
+  end
 end
