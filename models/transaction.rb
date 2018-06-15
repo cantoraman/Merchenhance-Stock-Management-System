@@ -8,43 +8,47 @@ class Transactions
     @id = options['id'].to_i if options['id']
     @_date = options['_date']
     @item_id = options['item_id'].to_i
+    @amount = options['amount'].to_i
+    @is_sold = options['is_sold'].to_b
   end
 
   def save()
-    sql = "INSERT INTO houses
+    sql = "INSERT INTO transactions
     (
-      name,
-      website
+      _date,
+      item_id,
+      amount,
+      is_sold
     )
     VALUES
     (
-      $1, $2
+      $1, $2, $3 $4
     )
     RETURNING id"
-    values = [@name, @website]
+    values = [@_date, @item_id, @amount, @is_sold]
     result = SqlRunner.run(sql, values)
     id = result.first["id"]
     @id = id.to_i
   end
 
   def self.find(id)
-    sql = "SELECT * FROM manufacturers
+    sql = "SELECT * FROM transactions
     WHERE id = $1"
     values = [id]
     result = SqlRunner.run(sql ,values).first
-    manufacturer = Manufacturers.new(result)
-    return manufacturer
+    transaction = Transactions.new(result)
+    return transaction
   end
 
   def self.all()
-    sql = "SELECT * FROM manufacturers"
-    manufacturers_data = SqlRunner.run(sql)
-    manufacturers = map_items(manufacturers_data)
-    return manufacturers
+    sql = "SELECT * FROM transactions"
+    transactions_data = SqlRunner.run(sql)
+    transactions = map_items(transactions_data)
+    return transactions
   end
 
-  def self.map_items(manufacturer_data)
-    return manufacturer_data.map { |manufacturer| Manufacturer.new(manufacturer) }
+  def self.map_items(transaction_data)
+    return transaction_data.map { |transaction| Transaction.new(transaction) }
   end
 
 end
