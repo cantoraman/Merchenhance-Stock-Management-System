@@ -1,4 +1,4 @@
-DROP TABLE shop_log;
+DROP TABLE transactions;
 DROP TABLE items;
 DROP TABLE manufacturers;
 
