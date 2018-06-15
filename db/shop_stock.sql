@@ -21,10 +21,10 @@ CREATE TABLE items (
   manufacturer_id INT8 REFERENCES manufacturers(id)
 );
 
-CREATE TABLE shop_log (
+CREATE TABLE transactions (
   id SERIAL4 PRIMARY KEY,
   _date DATE,
   item_id INT8 REFERENCES items(id),
   amount INT4,
-  sold? BOOLEAN
+  is_sold BOOLEAN
 );
