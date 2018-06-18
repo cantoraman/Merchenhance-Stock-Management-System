@@ -19,6 +19,11 @@ get '/items/new' do
   erb ( :"items/new" )
 end
 
+get '/items/:id' do
+  @item = Item.find(params[:id].to_i())
+  erb(:"items/show_item")
+end
+
 get '/items/:id/restock' do
   @manufacturers = Manufacturer.all()
   @item = Item.find(params['id'])

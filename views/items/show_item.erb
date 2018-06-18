@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Tag</th>
+    <th>Cost</th>
+    <th>Price</th>
+    <th>Stock Level</th>
+    <th>Manufacturer</th>
+    <th>Restock/Update</th>
+  </tr>
+
+  <tr>
+    <th><%= @item.id %></th>
+    <th><%= @item.name %></th>
+    <th><%= @item.description %></th>
+    <th><%= @item.tag %></th>
+    <th><%= @item.cost %></th>
+    <th><%= @item.price %></th>
+    <th><%= @item.stock_level %></th>
+    <th><%= @item.manufacturer_name()%></th>
+    <th><a href="/items/<%= @item.id %>/restock">Edit</a></th>
+  </form>
+  </tr>
+
+</table>

@@ -51,13 +51,13 @@
     <% for manufacturer in @manufacturers  %>
 
     <% if manufacturer.id == @item.manufacturer_id %>
-    <option value="<%= manufacturer.id %>"><%=manufacturer.name  %> selected</option>
+    <option value="<%= manufacturer.id %>" selected><%=manufacturer.name  %> </option>
     <% else %>
     <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
     <% end  %>
     <% end  %>
   </select>
-    <a href="/manufacturer/new">New Manufacturer</a>
+    <a href="/manufacturers/new">New Manufacturer</a>
 
 
 
