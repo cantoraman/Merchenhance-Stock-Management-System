@@ -2,7 +2,6 @@
 
 <table>
   <tr>
-    <th>id</th>
     <th>Name</th>
     <th>Description</th>
     <th>Tag</th>
@@ -14,7 +13,6 @@
   </tr>
   <% for item in @items %>
   <tr>
-    <th><%= item.id %></th>
     <th> <a href="/items/<%= item.id %>"><%= item.name %></a>
     </th>
     <th><%= item.description[0..50]%>
