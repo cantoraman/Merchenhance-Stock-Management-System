@@ -1,4 +1,5 @@
 DROP TABLE transactions;
+DROP TABLE item_tags;
 DROP TABLE items;
 DROP TABLE manufacturers;
 
@@ -8,11 +9,15 @@ CREATE TABLE manufacturers (
   website VARCHAR(255)
 );
 
+CREATE TABLE tags (
+  id SERIAL8 PRIMARY KEY,
+  title VARCHAR(144),
+);
+
 CREATE TABLE items (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
   description VARCHAR(255),
-  tag VARCHAR(144),
   cost INT8,
   price INT8,
   stock_level INT4,
@@ -22,9 +27,15 @@ CREATE TABLE items (
 );
 
 CREATE TABLE transactions (
-  id SERIAL4 PRIMARY KEY,
+  id SERIAL8 PRIMARY KEY,
   _date DATE,
   item_id INT8 REFERENCES items(id),
   amount INT4,
   is_sold BOOLEAN
+);
+
+CREATE TABLE item_tags(
+  id SERIAL8 PRIMARY KEY,
+  tag_id INT8 REFERENCES tag(id),
+  item_id INT8 REFERENCES items(id),
 );

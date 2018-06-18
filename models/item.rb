@@ -2,14 +2,13 @@ require_relative('../db/sql_runner')
 
 class Item
 
-  attr_reader :id, :name, :description, :tag, :cost, :price, :stock_level, :stock_low, :stock_medium, :manufacturer_id
+  attr_reader :id, :name, :description, :cost, :price, :stock_level, :stock_low, :stock_medium, :manufacturer_id
 
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @description = options['description']
-    @tag = options['tag']
     @cost = options['cost'].to_i
     @price = options['price'].to_i
     @stock_level = options['stock_level'].to_i
@@ -24,7 +23,6 @@ class Item
     (
       name,
       description,
-      tag,
       cost,
       price,
       stock_level,
@@ -34,10 +32,10 @@ class Item
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6, $7 ,$8, $9
+      $1, $2, $3, $4, $5, $6, $7 ,$8
     )
     RETURNING id"
-    values = [@name, @description, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id]
+    values = [@name, @description, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -49,7 +47,6 @@ class Item
     (
       name,
       description,
-      tag,
       cost,
       price,
       stock_level,
@@ -58,10 +55,10 @@ class Item
       manufacturer_id
     ) =
     (
-      $1, $2, $3, $4, $5, $6, $7 ,$8, $9
+      $1, $2, $3, $4, $5, $6, $7 ,$8
     )
     WHERE id = $10"
-    values = [@name, @description, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id, @id]
+    values = [@name, @description, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id, @id]
     SqlRunner.run(sql, values)
   end
 
@@ -104,13 +101,13 @@ class Item
   SqlRunner.run(sql)
   end
 
-  def self.tag_list()
-  items = Item.all()
-  all_tags= []
-  for item in items
-    all_tags.push(item.tag)
-  end
-  return all_tags.uniq!
-  end
+  # def self.tag_list()
+  # items = Item.all()
+  # all_tags= []
+  # for item in items
+  #   all_tags.push(item.tag)
+  # end
+  # return all_tags.uniq!
+  # end
 
 end
