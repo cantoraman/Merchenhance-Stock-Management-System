@@ -18,3 +18,8 @@ get '/items/new' do
   @manufacturers = Manufacturer.all()
   erb ( :"items/new" )
 end
+
+post '/items' do
+  Item.new(params).save
+  redirect to '/items'
+end

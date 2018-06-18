@@ -52,7 +52,7 @@
       <label for="manufacturer">Manufacturer:</label>
 
 
-      <select name="manufacturer" id="manufacturer">
+      <select name="manufacturer_id" id="manufacturer_id">
         <% for manufacturer in @manufacturers  %>
         <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
       <% end  %>
