@@ -100,7 +100,15 @@ class Item
   def self.delete_all()
   sql = "DELETE FROM items;"
   SqlRunner.run(sql)
-end
+  end
 
+  def self.tag_list()
+  items = Item.all()
+  all_tags= []
+  for item in items
+    all_tags.push(item.tag)
+  end
+  return all_tags.uniq!
+  end
 
 end

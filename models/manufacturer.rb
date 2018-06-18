@@ -36,6 +36,7 @@ class Manufacturer
     return manufacturer
   end
 
+
   def self.all()
     sql = "SELECT * FROM manufacturers"
     manufacturers_data = SqlRunner.run(sql)
