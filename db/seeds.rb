@@ -223,22 +223,19 @@ item8 = Item.new({
       "manufacturer_id" => manufacturer4.id
       })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   item1.save()
   item2.save()
   item3.save()
   item4.save()
+  item5.save()
+  item6.save()
+  item7.save()
+  item8.save()
+  item9.save()
+  item10.save()
+  item11.save()
+  item12.save()
+  item13.save()
+  item14.save()
+  item15.save()
+  item16.save()
