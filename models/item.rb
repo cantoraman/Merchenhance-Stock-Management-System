@@ -69,6 +69,12 @@ class Item
     SqlRunner.run(sql, values)
   end
 
+  def manufacturer_name()
+    sql = "SELECT name FORM manufacturers WHERE id = $1"
+    values = [@manufacturer_id]
+    return SqlRunner.run(sql, values).to_s
+  end
+
   def self.all()
     sql = "SELECT * FROM items"
     item_data = SqlRunner.run(sql)

@@ -93,7 +93,7 @@ item5 = Item.new({
 
 item6 = Item.new({
   "name" => "Electric Breast Pump",
-  "description" => "Features a gentle stimulation mode and three pumping settings."
+  "description" => "Features a gentle stimulation mode and three pumping settings.",
   "tag" => "electric breast pump",
   "cost" => "70.20",
   "price" => "125.00",
@@ -105,7 +105,7 @@ item6 = Item.new({
 
 item7 = Item.new({
   "name" => "Manual Breast Pump",
-  "description" => "Enhanced design, soft massage cussion."
+  "description" => "Enhanced design, soft massage cussion.",
   "tag" => "manual breast pump",
   "cost" => "32.40",
   "price" => "40.00",
@@ -117,7 +117,7 @@ item7 = Item.new({
 
 item8 = Item.new({
   "name" => "Baby Monitor",
-  "description" => "Hi-Res, 50m range, High Security, Auto Lullaby mode."
+  "description" => "Hi-Res, 50m range, High Security, Auto Lullaby mode.",
   "tag" => "monitor",
   "cost" => "158.40",
   "price" => "170.00",
@@ -129,7 +129,7 @@ item8 = Item.new({
 
   item9 = Item.new({
     "name" => "Electric Breast Pump",
-    "description" => "Award Winning Design. Comes with freezer bags"
+    "description" => "Award Winning Design. Comes with freezer bags",
     "tag" => "electric breast pump",
     "cost" => "120.20",
     "price" => "134.00",
@@ -165,7 +165,7 @@ item8 = Item.new({
 
   item12 = Item.new({
     "name" => "Manual Breast Pump",
-    "description" => "2-phase manual breast pumping consisting of expression and stimulation."
+    "description" => "2-phase manual breast pumping consisting of expression and stimulation.",
     "tag" => "manual breast pump",
     "cost" => "22.40",
     "price" => "24.99",

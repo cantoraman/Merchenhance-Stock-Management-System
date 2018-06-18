@@ -1,6 +1,6 @@
 require_relative('../db/sql_runner')
 
-class Transactions
+class Transaction
 
   attr_reader :id, :_date, :item_id, :amount, :is_sold
 
@@ -52,7 +52,7 @@ class Transactions
   end
 
   def self.delete_all()
-    sql = "DELETE FROM transactions;"
+    sql = "DELETE FROM transactions"
     SqlRunner.run(sql)
   end
 end

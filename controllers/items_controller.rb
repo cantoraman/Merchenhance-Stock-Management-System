@@ -1,8 +1,15 @@
+require( 'sinatra' )
+require( 'sinatra/contrib/all' )
+require( 'pry-byebug' )
+require_relative( '../models/item.rb' )
+require_relative( '../models/manufacturer.rb' )
+require_relative( '../models/transaction.rb' )
+also_reload( '../models/*' )
 
 
 #All
 get '/items' do
-  @items = Items.all()
+  @items = Item.all()
   erb(:"items/index")
 end
 

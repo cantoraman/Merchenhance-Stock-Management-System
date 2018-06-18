@@ -4,7 +4,7 @@ DROP TABLE manufacturers;
 
 CREATE TABLE manufacturers (
   id SERIAL8 PRIMARY KEY,
-  name VARCHAR(255)
+  name VARCHAR(255),
   website VARCHAR(255)
 );
 
@@ -17,7 +17,7 @@ CREATE TABLE items (
   price INT8,
   stock_level INT4,
   stock_low INT4,
-  stock_medium INT4
+  stock_medium INT4,
   manufacturer_id INT8 REFERENCES manufacturers(id)
 );
 
