@@ -1,6 +1,7 @@
 DROP TABLE transactions;
 DROP TABLE item_tags;
 DROP TABLE items;
+DROP TABLE tags;
 DROP TABLE manufacturers;
 
 CREATE TABLE manufacturers (
