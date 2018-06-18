@@ -11,8 +11,9 @@
 
     <div class="form-el">
       <label for="description">Description:</label>
-      <textarea rows="2" cols="50" name="description" maxlength="250" id="description" value="<%= @item.description%>"/>
-    </textarea>
+      <textarea rows="2" cols="50" name="description" maxlength="250" id="description">
+      <%= @item.description%>
+      </textarea>
   </div>
 
   <div class="form-el">

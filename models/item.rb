@@ -23,6 +23,7 @@ class Item
     sql = "INSERT INTO items
     (
       name,
+      description,
       tag,
       cost,
       price,
@@ -33,10 +34,10 @@ class Item
     )
     VALUES
     (
-      $1, $2, $3, $4, $5, $6, $7 ,$8
+      $1, $2, $3, $4, $5, $6, $7 ,$8, $9
     )
     RETURNING id"
-    values = [@name, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id]
+    values = [@name, @description, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
     @id = id
@@ -47,6 +48,7 @@ class Item
     SET
     (
       name,
+      description,
       tag,
       cost,
       price,
@@ -56,10 +58,10 @@ class Item
       manufacturer_id
     ) =
     (
-      $1, $2, $3, $4, $5, $6, $7 ,$8
+      $1, $2, $3, $4, $5, $6, $7 ,$8, $9
     )
-    WHERE id = $9"
-    values = [@name, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id, @id]
+    WHERE id = $10"
+    values = [@name, @description, @tag, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id, @id]
     SqlRunner.run(sql, values)
   end
 

@@ -15,8 +15,13 @@
   <% for item in @items %>
   <tr>
     <th><%= item.id %></th>
-    <th><%= item.name %></th>
-    <th><%= item.description %></th>
+    <th> <a href="/items/<%= item.id %>"><%= item.name %></a>
+    </th>
+    <th><%= item.description[0..50]%>
+        <% if item.description[51] %>
+        <%= p "..."  %>
+        <% end  %>
+    </th>
     <th><%= item.tag %></th>
     <th><%= item.cost %></th>
     <th><%= item.price %></th>
