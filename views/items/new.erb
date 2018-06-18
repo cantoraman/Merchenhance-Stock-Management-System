@@ -11,16 +11,22 @@
       <label for="description">Description:</label>
       <textarea rows="2" cols="50" name="description" maxlength="250" id="description"/>
     </textarea>
-    </div>
+  </div>
 
-    <div class="form-el">
-      <label for="tag">Tag:</label>
+  <div class="form-el">
+      <label for="new_tag">Tag:</label>
       <select name="tag" id="tag">
         <% tags= Item.tag_list() %>
         <% tags.each { |tag| %>
-        <option value="<%= tag %>"> <%= tag %></option>
-        <% }  %>
+          <option value="<%= tag %>"> <%= tag %></option>
+          <% }  %>
       </select>
+      <a href="/new_tag/">New Tag</a>
+  </div>
+
+
+
+
     </div>
 
     <div class="form-el">
@@ -55,17 +61,20 @@
       <select name="manufacturer_id" id="manufacturer_id">
         <% for manufacturer in @manufacturers  %>
         <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
-      <% end  %>
+        <% end  %>
+
+
       </select>
+        <a href="/manufacturer/new">New Manufacturer</a>
     </div>
 
-
-    </div>
-
-
-    <div class="form-el">
-      <input type="submit" value="Enter The Item"/>
-    </div>
 
   </div>
+
+
+  <div class="form-el">
+    <input type="submit" value="Enter New Item"/>
+  </div>
+
+</div>
 </form>

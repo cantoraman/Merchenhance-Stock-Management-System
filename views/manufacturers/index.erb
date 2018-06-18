@@ -1,0 +1,17 @@
+<h2>All Manufacturers</h2>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Website</th>
+  </tr>
+  <% for manufacturer in @manufacturers %>
+  <tr>
+    <th><%= manufacturer.id %></th>
+    <th><%= manufacturer.name %></th>
+    <th><%= manufacturer.website %></th>
+  </tr>
+    <% end %>
+
+</table>
