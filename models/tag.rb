@@ -4,13 +4,10 @@ class Tag
 
   attr_reader :id, :title
 
-
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @title = options['title']
   end
-
-
 
   def save()
     sql = "INSERT INTO tags (title) VALUES ($1)
@@ -25,7 +22,6 @@ class Tag
     results = SqlRunner.run( sql )
     return results.map { |tag| Tag.new( tag ) }
   end
-
 
   def self.delete_all()
     sql = "DELETE FROM tags"
