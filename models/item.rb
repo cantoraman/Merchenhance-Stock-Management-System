@@ -2,12 +2,13 @@ require_relative('../db/sql_runner')
 
 class Item
 
-  attr_accessor :age, :first_name, :last_name, :house_id
-  attr_reader :id
+  attr_reader :id, :name, :description, :tag, :cost, :price, :stock_level, :stock_low, :stock_medium, :manufacturer_id
+
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @name = options['name']
+    @description = options['description']
     @tag = options['tag']
     @cost = options['cost'].to_i
     @price = options['price'].to_i
@@ -70,9 +71,10 @@ class Item
   end
 
   def manufacturer_name()
-    sql = "SELECT name FORM manufacturers WHERE id = $1"
+    sql = "SELECT name FROM manufacturers WHERE id = $1"
     values = [@manufacturer_id]
-    return SqlRunner.run(sql, values).to_s
+    name= SqlRunner.run(sql, values)
+    return name[0]["name"]
   end
 
   def self.all()

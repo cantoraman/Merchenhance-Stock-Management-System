@@ -11,7 +11,7 @@ class Manufacturer
   end
 
   def save()
-    sql = "INSERT INTO houses
+    sql = "INSERT INTO manufacturers
     (
       name,
       website
@@ -46,7 +46,7 @@ class Manufacturer
   def self.map_items(manufacturer_data)
     return manufacturer_data.map { |manufacturer| Manufacturer.new(manufacturer) }
   end
-  
+
   def self.delete_all()
   sql = "DELETE FROM manufacturers;"
   SqlRunner.run(sql)
