@@ -10,6 +10,7 @@
     <th>Price</th>
     <th>Stock Level</th>
     <th>Manufacturer</th>
+    <th>Restock/Update</th>
   </tr>
   <% for item in @items %>
   <tr>
@@ -21,6 +22,8 @@
     <th><%= item.price %></th>
     <th><%= item.stock_level %></th>
     <th><%= item.manufacturer_name()%></th>
+    <th><a href="/items/<%= item.id %>/restock">Edit</a></th>
+  </form>
   </tr>
     <% end %>
 

@@ -19,6 +19,18 @@ get '/items/new' do
   erb ( :"items/new" )
 end
 
+get '/items/:id/restock' do
+  @manufacturers = Manufacturer.all()
+  @item = Item.find(params['id'])
+  erb(:"items/restock")
+end
+
+post '/items/:id' do
+  item = Item.new(params)
+  item.update
+  redirect to "/items/#{params['id']}"
+end
+
 post '/items' do
   Item.new(params).save
   redirect to '/items'
