@@ -1,10 +1,16 @@
 require_relative('../models/manufacturer.rb')
 require_relative('../models/item.rb')
 require_relative('../models/transaction.rb')
+require_relative('../models/order.rb')
+require_relative('../models/tag.rb')
+require_relative('../models/ItemTag.rb')
 
 Transaction.delete_all()
 Item.delete_all()
 Manufacturer.delete_all()
+Order.delete_all()
+Tag.delete_all()
+ItemTag.delete_all()
 
 manufacturer1= Manufacturer.new({
   "name" => "MAM",

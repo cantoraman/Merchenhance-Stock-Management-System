@@ -9,3 +9,10 @@ also_reload( './models/*' )
 get '/' do
   erb( :index )
 end
+
+
+
+def sell_item()
+
+
+end
