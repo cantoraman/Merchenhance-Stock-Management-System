@@ -23,6 +23,11 @@
     </th>
     <th><%= order.is_processed=="t" ? "Yes" : "No" %></th>
     <th><%= order.number_of_items() %></th>
+    <th>
+      <form action="/orders/<%= order.id %>/edit" method="post">
+      <input type="submit" value="Edit & Process Order"/>
+      </form>
+    </th>
   </tr>
     <% counter += 1  %>
     <% end %>

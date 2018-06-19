@@ -29,9 +29,7 @@ class Shop
 
   def add_to_cart(items)
     order = Order.find_unprocessed()
-    
-
-
+  
   end
 
 end
