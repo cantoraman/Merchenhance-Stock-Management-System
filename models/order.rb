@@ -2,26 +2,28 @@ require_relative('../db/sql_runner')
 
 class Order
 
-  attr_reader :id, :order_date, :is_sold
+  attr_reader :id, :order_date, :is_sold, :is_processed
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @order_date = options['order_date']
-    @is_sold = options['order_id'].to_b
+    @is_sold = options['is_sold'].to_b
+    @is_processed = options['is_processed'].to_b
   end
 
   def save()
     sql = "INSERT INTO transactions
     (
       order_date,
-      is_sold
+      is_sold,
+      is_processed
     )
     VALUES
     (
-      $1, $2
+      $1, $2, $3
     )
     RETURNING id"
-    values = [@order_date, @is_sold]
+    values = [@order_date, @is_sold, @is_processed]
     result = SqlRunner.run(sql, values)
     id = result.first["id"]
     @id = id.to_i

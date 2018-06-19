@@ -26,5 +26,8 @@ class Shop
       }
   end
 
+  def add_to_cart(items)
+    @cart.push
+  end
 
 end

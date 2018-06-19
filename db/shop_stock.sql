@@ -37,7 +37,8 @@ CREATE TABLE item_tags(
 CREATE TABLE orders (
   id SERIAL8 PRIMARY KEY,
   order_date DATE,
-  is_sold BOOLEAN
+  is_sold BOOLEAN,
+  is_processed BOOLEAN
 );
 
 CREATE TABLE transactions (
