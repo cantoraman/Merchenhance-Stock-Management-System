@@ -24,12 +24,6 @@ get '/items/:id' do
   erb(:"items/show_item")
 end
 
-get '/items/:id/restock' do
-  @manufacturers = Manufacturer.all()
-  @item = Item.find(params['id'])
-  erb(:"items/restock")
-end
-
 get '/items/:id/edit' do
   @manufacturers = Manufacturer.all()
   @item = Item.find(params['id'])

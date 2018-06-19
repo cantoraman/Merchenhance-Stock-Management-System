@@ -1,0 +1,23 @@
+<h2>All Orders</h2>
+
+<table>
+  <tr>
+    <th>Order Number</th>
+    <th>Order Date</th>
+    <th>Outgoing</th>
+    <th>Processed</th>
+    <th>Number of Items</th>
+  </tr>
+  <% counter=1  %>
+  <% for order in @orders %>
+
+  <tr>
+    <th><%=counter%></th>
+    <th><%= order.order_date%></th>
+    <th><%= order.is_sold? "Yes" : "No" %></th>
+    <th><%= order.is_processed? "Yes" : "No" %></th>
+    <th><%= order.number_of_items() %></th>
+  </tr>
+    <% end %>
+
+</table>
