@@ -15,7 +15,6 @@ class Item
     @stock_low = options['stock_low'].to_i
     @stock_medium = options['stock_medium'].to_i
     @manufacturer_id = options['manufacturer_id'].to_i
-
   end
 
   def save()
