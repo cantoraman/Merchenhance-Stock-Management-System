@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner')
+require_relative('transaction')
+require_relative('item')
 
 class Order
 
@@ -27,6 +29,17 @@ class Order
     result = SqlRunner.run(sql, values)
     id = result.first["id"]
     @id = id.to_i
+  end
+
+  def number_of_items()
+     sql = "SELECT items.*
+     FROM items
+     INNER JOIN transactions
+     ON items.id = transactions.item_id
+     WHERE transactions.order_id = $1"
+     values = [@id]
+     data = SqlRunner.run(sql, values)
+     return data.length
   end
 
   def self.find(id)

@@ -13,9 +13,9 @@
 
   <tr>
     <th><%=counter%></th>
-    <th><%= order.order_date%></th>
-    <th><%= order.is_sold? "Yes" : "No" %></th>
-    <th><%= order.is_processed? "Yes" : "No" %></th>
+    <th><%= order.order_date %></th>
+    <th><%= order.is_sold ? "Yes" : "No" %></th>
+    <th><%= order.is_processed ? "Yes" : "No" %></th>
     <th><%= order.number_of_items() %></th>
   </tr>
     <% end %>
