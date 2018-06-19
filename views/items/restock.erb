@@ -1,25 +1,32 @@
 <h2>Restock/Update</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Price</th>
+    <th>Stock Level</th>
+    <th>Manufacturer</th>
+    <th>Restock/Update</th>
+  </tr>
+
+  <tr>
+
+    <th><%= @item.name %></th>
+    <th><%= @item.description %></th>
+    <th><%= @item.cost %></th>
+    <th><%= @item.price %></th>
+    <th><%= @item.stock_level %></th>
+    <th><%= @item.manufacturer_name()%></th>
+    <th><a href="/items/<%= @item.id %>/restock">Edit</a></th>
+  </form>
+  </tr>
+
+</table>
+
+
 <form method="POST" action="/items/<%= @item.id %>">
   <div class="form-wrapper">
-
-    <div class="form-el">
-      <label for="first_name">Name:</label>
-      <input type="text" name="name" id="name" value="<%= @item.name %>"/>
-    </div>
-
-
-
-    <div class="form-el">
-      <label for="description">Description:</label>
-      <textarea rows="2" cols="50" name="description" maxlength="250" id="description">
-      <%= @item.description%>
-      </textarea>
-  </div>
-
-  <!-- <div class="form-el">
-    <label for="tag">Tag:</label>
-    <input type="text" name="tag" id="tag" value="<%= @item.tag %>"/>
-  </div> -->
 
   <div class="form-el">
     <label for="cost">Cost:</label>
@@ -31,36 +38,10 @@
     <input type="number" min="0" name="price" id="price" value="<%= @item.price %>"/>
   </div>
 
-  <div class="form-el">
-    <label for="stock_level">Stock Level:</label>
-    <input type="number" min="0" name="stock_level" id="stock_level" value="<%= @item.stock_level %>"/>
-  </div>
+
+
 
   <div class="form-el">
-    <label for="stock_low">Low Stock Limit:</label>
-    <input type="number" min="0" name="stock_low" id="stock_low" value="<%= @item.stock_low %>"/>
-  </div>
-
-  <div class="form-el">
-    <label for="stock_medium">Medium Stock Limit:</label>
-    <input type="number" min="0" name="stock_medium" id="stock_medium" value="<%= @item.stock_medium %>"/>
-  </div>
-
-  <div class="form-el">
-  <label for="manufacturer">Manufacturer:</label>
-  <select name="manufacturer_id" id="manufacturer_id">
-    <% for manufacturer in @manufacturers  %>
-
-    <% if manufacturer.id == @item.manufacturer_id %>
-    <option value="<%= manufacturer.id %>" selected><%=manufacturer.name  %> </option>
-    <% else %>
-    <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
-    <% end  %>
-    <% end  %>
-  </select>
-    <a href="/manufacturers/new">New Manufacturer</a>
-
-
 
     <div class="form-el">
       <input type="submit" value="Edit Stock"/>

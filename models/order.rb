@@ -52,20 +52,3 @@ class Order
     SqlRunner.run(sql)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  @date = options['date']
-      @is_sold = options['is_sold'].to_b

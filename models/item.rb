@@ -108,5 +108,15 @@ class Item
   # end
   # return all_tags.uniq!
   # end
+  # <div class="form-el">
+  #     <label for="new_tag">Tag:</label>
+  #     <select name="tag" id="tag">
+  #       <% tags= Item.tag_list() %>
+  #       <% tags.each { |tag| %>
+  #         <option value="<%= tag %>"> <%= tag %></option>
+  #         <% }  %>
+  #     </select>
+  #     <a href="/new_tag/">New Tag</a>
+  # </div>
 
 end

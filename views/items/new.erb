@@ -13,68 +13,58 @@
     </textarea>
   </div>
 
-  <!-- <div class="form-el">
-      <label for="new_tag">Tag:</label>
-      <select name="tag" id="tag">
-        <% tags= Item.tag_list() %>
-        <% tags.each { |tag| %>
-          <option value="<%= tag %>"> <%= tag %></option>
-          <% }  %>
-      </select>
-      <a href="/new_tag/">New Tag</a>
-  </div> -->
 
 
 
 
-    </div>
+</div>
 
-    <div class="form-el">
-      <label for="cost">Cost:</label>
-      <input type="number" name="cost" min="0" id="cost"/>
-    </div>
+<div class="form-el">
+  <label for="cost">Cost:</label>
+  <input type="number" name="cost" min="0" id="cost"/>
+</div>
 
-    <div class="form-el">
-      <label for="price">Price:</label>
-      <input type="number" name="price" min="0" id="price"/>
-    </div>
+<div class="form-el">
+  <label for="price">Price:</label>
+  <input type="number" name="price" min="0" id="price"/>
+</div>
 
-    <div class="form-el">
-      <label for="stock_level">Stock Level:</label>
-      <input type="number" name="stock_level" min="0" id="stock_level"/>
-    </div>
+<div class="form-el">
+  <label for="stock_level">Stock Level:</label>
+  <input type="number" name="stock_level" min="0" id="stock_level"/>
+</div>
 
-    <div class="form-el">
-      <label for="stock_low">Low Stock Limit:</label>
-      <input type="number" name="stock_low" min="0" id="stock_low"/>
-    </div>
+<div class="form-el">
+  <label for="stock_low">Low Stock Limit:</label>
+  <input type="number" name="stock_low" min="0" id="stock_low"/>
+</div>
 
-    <div class="form-el">
-      <label for="stock_medium">Medium Stock Limit:</label>
-      <input type="number" name="stock_medium" min="0" id="stock_medium"/>
-    </div>
+<div class="form-el">
+  <label for="stock_medium">Medium Stock Limit:</label>
+  <input type="number" name="stock_medium" min="0" id="stock_medium"/>
+</div>
 
-    <div class="form-el">
-      <label for="manufacturer">Manufacturer:</label>
-
-
-      <select name="manufacturer_id" id="manufacturer_id">
-        <% for manufacturer in @manufacturers  %>
-        <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
-        <% end  %>
+<div class="form-el">
+  <label for="manufacturer">Manufacturer:</label>
 
 
-      </select>
-        <a href="/manufacturer/new">New Manufacturer</a>
-    </div>
+  <select name="manufacturer_id" id="manufacturer_id">
+    <% for manufacturer in @manufacturers  %>
+    <option value="<%= manufacturer.id %>"><%=manufacturer.name  %></option>
+    <% end  %>
 
 
-  </div>
+  </select>
+  <a href="/manufacturer/new">New Manufacturer</a>
+</div>
 
 
-  <div class="form-el">
-    <input type="submit" value="Enter New Item"/>
-  </div>
+</div>
+
+
+<div class="form-el">
+  <input type="submit" value="Enter New Item"/>
+</div>
 
 </div>
 </form>

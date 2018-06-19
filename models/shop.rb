@@ -22,8 +22,9 @@ class Shop
         "order_id" => @order.id,
         "amount" => amount
         })
-        transaction.save()
+      transaction.save()
       }
-
   end
+
+
 end

@@ -30,6 +30,12 @@ get '/items/:id/restock' do
   erb(:"items/restock")
 end
 
+get '/items/:id/edit' do
+  @manufacturers = Manufacturer.all()
+  @item = Item.find(params['id'])
+  erb(:"items/edit")
+end
+
 post '/items/:id' do
   item = Item.new(params)
   item.update

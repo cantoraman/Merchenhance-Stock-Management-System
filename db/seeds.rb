@@ -3,7 +3,7 @@ require_relative('../models/item.rb')
 require_relative('../models/transaction.rb')
 require_relative('../models/order.rb')
 require_relative('../models/tag.rb')
-require_relative('../models/ItemTag.rb')
+require_relative('../models/item_tag.rb')
 
 Transaction.delete_all()
 Item.delete_all()
