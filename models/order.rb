@@ -38,6 +38,14 @@ class Order
     return order
   end
 
+  def self.find_unprocessed()
+    sql = "SELECT * FROM orders
+    WHERE is_processed = false"
+    result = SqlRunner.run(sql).first
+    order = Orders.new(result)
+    return order
+  end
+
   def self.all()
     sql = "SELECT * FROM orders"
     order_data = SqlRunner.run(sql)
@@ -53,4 +61,7 @@ class Order
     sql = "DELETE FROM orders"
     SqlRunner.run(sql)
   end
+
+
+
 end

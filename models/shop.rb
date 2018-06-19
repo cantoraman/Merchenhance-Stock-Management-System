@@ -9,7 +9,8 @@ class Shop
   def sell_items(items)
     @order=Order.new({
       "order_date" => DateTime.now,
-      "is_sold" => "True"
+      "is_sold" => "True",
+      "is_processed" => "True",
       })
     @order.save()
 
@@ -27,7 +28,10 @@ class Shop
   end
 
   def add_to_cart(items)
-    @cart.push
+    order = Order.find_unprocessed()
+    
+
+
   end
 
 end

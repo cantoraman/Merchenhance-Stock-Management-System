@@ -36,14 +36,6 @@ get '/items/:id/edit' do
   erb(:"items/edit")
 end
 
-post '/items/cart/:id/' do
-  cart_hash=params
-  p cart_hash
-
-  redirect to ":items/index"
-end
-
-
 post '/items/:id' do
   item = Item.new(params)
   item.update
