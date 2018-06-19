@@ -32,7 +32,7 @@
 
 
 <h2>Items in the Order</h2>
-
+<% items_in_order = @order.items  %>
 <table>
   <tr>
     <th>Name</th>
@@ -42,10 +42,9 @@
     <th>Stock Level</th>
     <th>Manufacturer</th>
   </tr>
-  <% for item in @items %>
+  <% for item in items_in_order %>
   <tr>
-    <th> <a href="/items/<%= item.id %>"><%= item.name %></a>
-    </th>
+    <th> <%= item.name %></th>
     <th><%= item.description[0..50]%>
         <% if item.description[51] %>
         <%= p "..."  %>

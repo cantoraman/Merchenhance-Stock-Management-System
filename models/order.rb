@@ -32,21 +32,21 @@ class Order
   end
 
   def items()
-     sql = "SELECT items.*
+     sql = "SELECT *
      FROM items
      INNER JOIN transactions
      ON items.id = transactions.item_id
      WHERE transactions.order_id = $1"
      values = [@id]
      data = SqlRunner.run(sql, values)
-     if data.first
-       return data.first
-     end
+     return data.map { |item| Item.new(item) }
   end
 
   def number_of_items()
     item_list=items()
-    if item_list
+    if item_list.length > 0
+      # p "YYYYY"
+      # p item_list
        return item_list.length
      else
       return 0
