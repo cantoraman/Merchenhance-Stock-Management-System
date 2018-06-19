@@ -1,0 +1,33 @@
+<h2>Items to Reorder</h2>
+<h4>Please use <a href="items/new">New Item</a> to order new items</h4>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Price</th>
+    <th>Stock Level</th>
+    <th>Manufacturer</th>
+    <th>Amount to Order</th>
+    <th>Add To Order</th>
+  </tr>
+  <% for item in @items %>
+  <tr>
+    <th> <a href="/items/<%= item.id %>"><%= item.name %></a></th>
+    <th><%= item.description[0..50]%>
+        <% if item.description[51] %>
+        <%= p "..."  %>
+        <% end  %>
+    </th>
+    <th><%= item.cost %></th>
+    <th><%= item.price %></th>
+    <th><%= item.stock_level %></th>
+    <th><%= item.manufacturer_name()%></th>
+    <th>
+
+    </th>
+  </tr>
+    <% end %>
+
+</table>

@@ -16,6 +16,7 @@ end
 
 #NEW
 get '/orders/new' do
+  @items = Item.all()
   @orders = Order.all()
   erb ( :"orders/new" )
 end
