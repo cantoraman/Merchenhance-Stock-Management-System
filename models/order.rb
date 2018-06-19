@@ -9,12 +9,12 @@ class Order
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @order_date = options['order_date']
-    @is_sold = options['is_sold'].to_b
-    @is_processed = options['is_processed'].to_b
+    @is_sold = options['is_sold']
+    @is_processed = options['is_processed']
   end
 
   def save()
-    sql = "INSERT INTO transactions
+    sql = "INSERT INTO orders
     (
       order_date,
       is_sold,
@@ -39,7 +39,11 @@ class Order
      WHERE transactions.order_id = $1"
      values = [@id]
      data = SqlRunner.run(sql, values)
-     return data.length
+     if data.first
+       return data.first.length
+     else
+      return 0
+    end
   end
 
   def self.find(id)

@@ -6,7 +6,7 @@ require_relative( '../models/manufacturer.rb' )
 require_relative( '../models/transaction.rb' )
 require_relative( '../models/order.rb' )
 require_relative( '../models/shop.rb' )
-
+require ('date')
 
 #All
 get '/orders' do
@@ -18,7 +18,19 @@ end
 get '/orders/new' do
   @items = Item.all()
   @orders = Order.all()
-  erb ( :"orders/new" )
+  order = Order.new({"order_date" => DateTime.now,
+    "is_sold" => true,
+    "is_processed" => false
+    })
+  order.save()
+  redirect to '/orders'
+end
+
+#ADD
+get '/orders/add' do
+  @items = Item.all()
+  @orders = Order.all()
+  erb ( :"orders/add" )
 end
 
 get '/orders/:id' do
