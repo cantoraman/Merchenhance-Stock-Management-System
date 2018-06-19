@@ -6,30 +6,24 @@ require_relative('transaction')
 class Shop
 
 
-  def sell_items(item_ids, amounts)
+  def sell_items(items)
     @order=Order.new({
       "order_date" => DateTime.now,
       "is_sold" => "True"
       })
     @order.save()
 
-    for i in 0..(item_ids.length)
-
-      item=Item.find(item_ids[i])
-      item.stock_level -= amounts[i]
+    items.each { |id, amount|
+      item=Item.find(id)
+      item.stock_level -= amount
       item.update()
       transaction=Transaction.new({
-        "item_id" =>
+        "item_id" => item.id,
+        "order_id" => @order.id,
+        "amount" => amount
         })
+        transaction.save()
+      }
 
-    end
-
-    }
-
-
-
-
-
-
-
+  end
 end
