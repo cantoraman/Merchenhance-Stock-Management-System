@@ -26,14 +26,7 @@
     <th><%= item.stock_level %></th>
     <th><%= item.manufacturer_name()%></th>
     <th><a href="/items/<%= item.id %>/edit">Edit</a></th>
-    <th><a href="/items/<%= item.id %>/restock">Restock</a></th>
     <th><a href="/items/">-dummy-</a></th>
-    <th>  <form method="POST" action="/cart/add/<%= item.id %>/">
-
-      <input type="number" min="0" name="amount" id="amount"/>
-
-      <input type="submit" value="Add to Cart"/>
-    </form></th>
   </tr>
     <% end %>
 
