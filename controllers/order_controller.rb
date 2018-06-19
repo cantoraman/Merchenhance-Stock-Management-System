@@ -39,6 +39,7 @@ get '/orders/:id' do
 end
 
 get '/orders/:id/edit' do
+  @items = Item.all()
   @order = Order.find(params['id'])
   erb(:"orders/edit")
 end
@@ -47,6 +48,16 @@ post '/orders/:id' do
   order = Order.new(params)
   order.update()
   redirect to "/orders/#{params['id']}"
+end
+
+post '/orders/:id/add/:item_id' do
+  transaction=Transaction.new({
+    "item_id" => params['item_id'],
+    "order_id" => params['id'],
+    "amount" => params['amount']
+    })
+  transaction.save()
+  redirect to "/orders/#{params['id']}/edit"
 end
 
 post '/orders' do

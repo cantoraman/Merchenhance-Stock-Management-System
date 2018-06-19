@@ -31,7 +31,7 @@ class Order
     @id = id.to_i
   end
 
-  def number_of_items()
+  def items()
      sql = "SELECT items.*
      FROM items
      INNER JOIN transactions
@@ -40,7 +40,14 @@ class Order
      values = [@id]
      data = SqlRunner.run(sql, values)
      if data.first
-       return data.first.length
+       return data.first
+     end
+  end
+
+  def number_of_items()
+    item_list=items()
+    if item_list
+       return item_list.length
      else
       return 0
     end
@@ -50,8 +57,8 @@ class Order
     sql = "SELECT * FROM orders
     WHERE id = $1"
     values = [id]
-    result = SqlRunner.run(sql ,values).first
-    order = Orders.new(result)
+    result = SqlRunner.run(sql, values).first
+    order = Order.new(result)
     return order
   end
 

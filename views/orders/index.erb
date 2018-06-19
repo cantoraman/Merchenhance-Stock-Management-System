@@ -24,9 +24,10 @@
     <th><%= order.is_processed=="t" ? "Yes" : "No" %></th>
     <th><%= order.number_of_items() %></th>
     <th>
-      <form action="/orders/<%= order.id %>/edit" method="post">
-      <input type="submit" value="Edit & Process Order"/>
-      </form>
+      <div class="button-link">
+        <a class="button-link" href="/orders/<%= order.id %>/edit">Edit & Process Order</a>
+      </div>
+
     </th>
   </tr>
     <% counter += 1  %>
