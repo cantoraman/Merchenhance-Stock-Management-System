@@ -115,12 +115,13 @@ class Order
     order = Orders.new(result)
     return order
   end
+
   def self.find_processed()
     sql = "SELECT * FROM orders
-    WHERE is_processed = true"
-    result = SqlRunner.run(sql).first
-    order = Orders.new(result)
-    return order
+    WHERE is_processed = TRUE"
+    order_data = SqlRunner.run(sql).first
+    orders = map_items(order_data)
+    return orders
   end
 
   def self.all()

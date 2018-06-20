@@ -46,7 +46,6 @@ end
 
 get '/orders/:id/view-transactions' do
   @order = Order.find(params['id'])
-  @items = Item.all()
   erb(:"orders/view-transactions")
 end
 

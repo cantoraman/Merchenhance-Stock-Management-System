@@ -1,0 +1,40 @@
+<h2>Order Details</h2>
+
+
+<table>
+  <tr>
+    <th>Order Date</th>
+    <th>Outgoing</th>
+  </tr>
+  <tr>
+    <th><%= @order.order_date %></th>
+    <th><% if @order.is_sold == "t" %>
+        <%= "Yes"  %>
+        <% else  %>
+        <%= "NO" %>
+        <% end  %>
+    </th>
+  </tr>
+</table>
+
+
+
+<% items_in_order = @order.items  %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Cost(£)</th>
+    <th>Price(£)</th>
+    <th>Manufacturer</th>
+    <th>Amount</th>
+  </tr>
+  <% for item in items_in_order %>
+  <tr>
+    <td> <%= item.name %></td>
+    <td><%= item.cost %></td>
+    <td><%= item.price %></td>
+    <td><%= item.manufacturer_name()%></td>
+    <td> <%= Transaction.find_in_order(@order.id, item.id).amount%></td>
+  </tr>
+    <% end %>
+</table>
