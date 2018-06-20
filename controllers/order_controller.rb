@@ -60,6 +60,16 @@ post '/orders/:id/add/:item_id' do
   redirect to "/orders/#{params['id']}/edit"
 end
 
+
+post '/orders/:order_id/remove/:item_id' do
+  transaction=Transaction.find_in_order(params['order_id'].to_i, params['item_id'].to_i)
+
+  transaction.delete()
+  redirect to "/orders/#{params['order_id']}/edit"
+end
+
+
+
 post '/orders' do
   Order.new(params).save
   redirect to '/orders'

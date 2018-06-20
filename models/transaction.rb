@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require('pry')
 
 class Transaction
 
@@ -29,12 +30,28 @@ class Transaction
     @id = id.to_i
   end
 
+  def delete()
+    sql = "DELETE FROM transactions
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+
   def self.find(id)
     sql = "SELECT * FROM transactions
     WHERE id = $1"
     values = [id]
-    result = SqlRunner.run(sql ,values).first
-    transaction = Transactions.new(result)
+    results = SqlRunner.run( sql, values )
+    return Transaction.new( results.first )
+  end
+
+  def self.find_in_order(order_id, item_id)
+    sql = "SELECT * FROM transactions
+    WHERE order_id = $1 AND item_id = $2"
+    values = [order_id, item_id]
+    result = SqlRunner.run(sql, values).first
+    transaction = Transaction.new(result)
     return transaction
   end
 

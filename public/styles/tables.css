@@ -1,0 +1,7 @@
+table, td, th {
+    border: 1px solid black;
+}
+table {
+    border-radius: 5px;
+    border: 1px groove black;
+}

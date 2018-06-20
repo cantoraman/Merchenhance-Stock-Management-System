@@ -3,9 +3,9 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th>Cost</th>
-    <th>Price</th>
+
+    <th>Cost(£)</th>
+    <th>Price(£)</th>
     <th>Stock Level</th>
     <th>Manufacturer</th>
   </tr>
@@ -13,18 +13,13 @@
   <tr>
     <th> <a href="/items/<%= item.id %>"><%= item.name %></a>
     </th>
-    <th><%= item.description[0..50]%>
-        <% if item.description[51] %>
-        <%= p "..."  %>
-        <% end  %>
-    </th>
     <th><%= item.cost %></th>
     <th><%= item.price %></th>
     <th><%= item.stock_level %></th>
     <th><%= item.manufacturer_name()%></th>
     <th>
       <form action="/orders/<%=@order.id%>/add/<%=item.id%>" method="post">
-      <input type="number" name="amount" min="0" id="amount"/> <input type="submit" value="Add Item"/>      </form></th>
+      <input type="number" style="width: 50px;" name="amount" min="0" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></th>
   </tr>
     <% end %>
 </table>
@@ -36,24 +31,22 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
-    <th>Cost</th>
-    <th>Price</th>
+
+    <th>Cost(£)</th>
+    <th>Price(£)</th>
     <th>Stock Level</th>
     <th>Manufacturer</th>
   </tr>
   <% for item in items_in_order %>
   <tr>
     <th> <%= item.name %></th>
-    <th><%= item.description[0..50]%>
-        <% if item.description[51] %>
-        <%= p "..."  %>
-        <% end  %>
-    </th>
+
     <th><%= item.cost %></th>
     <th><%= item.price %></th>
     <th><%= item.stock_level %></th>
     <th><%= item.manufacturer_name()%></th>
+    <th><form action="/orders/<%=@order.id%>/remove/<%=item.id%>" method="post">
+    <input type="submit" value="Delete Item"/></form></th>
   </tr>
     <% end %>
 </table>
