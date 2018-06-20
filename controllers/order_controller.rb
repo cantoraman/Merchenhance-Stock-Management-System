@@ -61,12 +61,18 @@ post '/orders/:id/add/:item_id' do
     "amount" => params['amount']
     })
   transaction.save()
+  item = Item.find(params['item_id'])
+  item.reduce_stock_level(params['amount'].to_i)
+  item.update()
   redirect to "/orders/#{params['id']}/edit"
 end
 
 
 post '/orders/:order_id/remove/:item_id' do
   transaction=Transaction.find_in_order(params['order_id'].to_i, params['item_id'].to_i)
+  item = Item.find(params['item_id'])
+  item.raise_stock_level(transaction.amount)
+  item.update()
   transaction.delete()
   redirect to "/orders/#{params['order_id']}/edit"
 end

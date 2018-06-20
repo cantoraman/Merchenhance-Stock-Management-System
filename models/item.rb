@@ -43,6 +43,9 @@ class Item
   def reduce_stock_level(reduction)
     @stock_level-=reduction
   end
+  def raise_stock_level(rise)
+    @stock_level+=rise
+  end
 
   def update()
     sql = "UPDATE items

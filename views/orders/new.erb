@@ -1,5 +1,5 @@
 <h2>Items Available to Order</h2>
-<h4>Please use <a href="items/new">New Item</a> to order new items</h4><div class="grid-row">
+<h4>Please use <a href="/items/new">New Item</a> to order new items</h4><div class="grid-row">
 
 <div class="opt-list">
 <h2>Items Available To Order</h2>
@@ -23,7 +23,9 @@
     <td><%= item.manufacturer_name()%></td>
     <td>
       <form action="/orders/<%=@order.id%>/add/<%=item.id%>" method="post">
-      <input type="number" style="width: 50px;" name="amount" min="1" max="<%=item.stock_level%>" value="1" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></td>
+      <input type="number" style="width: 50px;" name="amount" min="1" max="<%=item.stock_level%>" value="1" id="amount"/>
+      <br>
+      <input type="submit" value="Add Item"/>      </form></td>
   </tr>
     <%end%>
     <% end %>
@@ -33,10 +35,12 @@
 <div class="cart">
 <h2>Items in the Order</h2>
 <% items_in_order = @order.items  %>
+<% if items_in_order.length>0  %>
 <form action="/orders/<%=@order.id%>/process" method="post">
 <input class="process-button" type="submit" value="Process The Order"/></form>
+<% end %>
 <form action="/orders/<%=@order.id%>/delete" method="post">
-<input class="process-button" type="submit" value="Delete The Order"/></form>
+<input class="process-button" type="submit" value="Remove The Order"/></form>
 
 <table>
 
@@ -65,38 +69,3 @@
 </div>
 
 </div>
-
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Cost</th>
-    <th>Price</th>
-    <th>Stock Level</th>
-    <th>Manufacturer</th>
-    <th>Amount to Order</th>
-    <th>Add To Order</th>
-  </tr>
-  <% for item in @items %>
-  <tr>
-    <th> <a href="/items/<%= item.id %>"><%= item.name %></a></th>
-    <th><%= item.description[0..50]%>
-        <% if item.description[51] %>
-        <%= p "..."  %>
-        <% end  %>
-    </th>
-    <th><%= item.cost %></th>
-    <th><%= item.price %></th>
-    <th><%= item.stock_level %></th>
-    <th><%= item.manufacturer_name()%></th>
-    <th>
-<form action="/orders" method="post">
-    <input type="number" name="amount" min="0" id="amount"/>
-    <input type="submit" value="Enter New Item"/>
-</form>
-    </th>
-  </tr>
-    <% end %>
-
-</table>
