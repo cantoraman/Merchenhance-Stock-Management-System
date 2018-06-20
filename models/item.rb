@@ -40,6 +40,10 @@ class Item
     @id = id
   end
 
+  def reduce_stock_level(reduction)
+    @stock_level-=reduction
+  end
+
   def update()
     sql = "UPDATE items
     SET
@@ -56,7 +60,7 @@ class Item
     (
       $1, $2, $3, $4, $5, $6, $7 ,$8
     )
-    WHERE id = $10"
+    WHERE id = $9"
     values = [@name, @description, @cost, @price, @stock_level, @stock_low, @stock_medium, @manufacturer_id, @id]
     SqlRunner.run(sql, values)
   end

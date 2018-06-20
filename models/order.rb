@@ -51,6 +51,26 @@ class Order
     end
   end
 
+  def update()
+    sql = "UPDATE orders
+    SET
+    (
+      order_date,
+      is_sold,
+      is_processed
+    ) =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@order_date, @is_sold, @is_processed, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def process_self()
+    @is_processed = true
+  end
+
   def self.find(id)
     sql = "SELECT * FROM orders
     WHERE id = $1"
@@ -60,9 +80,44 @@ class Order
     return order
   end
 
+  def self.show_till()
+    gain=0
+    orders = Order.find_processed()
+    orders.map{ |order|
+      transactions = Transaction.transactions_of_order(order.id)
+
+      transactions.map{ |transaction|
+        item=Item.find(transaction.item_id)
+        gain+=(item.price*transaction.amount)
+      }
+    }
+    return till
+  end
+
+  def self.process(id)
+    order = Order.find(id)
+    transactions = Transaction.transactions_of_order(order.id)
+
+    transactions.map{ |transaction|
+      item=Item.find(transaction.item_id)
+      item.reduce_stock_level(transaction.amount)
+      item.update()
+    }
+    order.process_self()
+    order.update()
+  end
+
+
   def self.find_unprocessed()
     sql = "SELECT * FROM orders
     WHERE is_processed = false"
+    result = SqlRunner.run(sql).first
+    order = Orders.new(result)
+    return order
+  end
+  def self.find_processed()
+    sql = "SELECT * FROM orders
+    WHERE is_processed = true"
     result = SqlRunner.run(sql).first
     order = Orders.new(result)
     return order

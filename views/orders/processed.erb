@@ -1,4 +1,4 @@
-<h2>Orders</h2>
+<h2>Processed Orders</h2>
 
 <h3> <a href="orders/new">New Order</a> </h3>
 <table>
@@ -23,15 +23,11 @@
     </th>
     <th><%= order.is_processed=="t" ? "Yes" : "No" %></th>
     <th><%= order.number_of_items() %></th>
-    <th><% if order.is_processed == "f" %>
-        <div class="button-link">
+    <th>
+      <div class="button-link">
         <a class="button-link" href="/orders/<%= order.id %>/edit">Edit & Process Order</a>
-        </div>
-      <% else %>
-        <div class="button-link">
-        <a class="button-link" href="/orders/<%= order.id %>/view">View Order</a>
       </div>
-      <% end %>
+
     </th>
   </tr>
     <% counter += 1  %>

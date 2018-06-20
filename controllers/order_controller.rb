@@ -44,6 +44,12 @@ get '/orders/:id/edit' do
   erb(:"orders/edit")
 end
 
+get '/orders/:id/view-transactions' do
+  @order = Order.find(params['id'])
+  @items = Item.all()
+  erb(:"orders/view-transactions")
+end
+
 post '/orders/:id' do
   order = Order.new(params)
   order.update()
@@ -63,11 +69,14 @@ end
 
 post '/orders/:order_id/remove/:item_id' do
   transaction=Transaction.find_in_order(params['order_id'].to_i, params['item_id'].to_i)
-
   transaction.delete()
   redirect to "/orders/#{params['order_id']}/edit"
 end
 
+post '/orders/:order_id/process' do
+  Order.process(params['order_id'])
+  redirect to "/orders"
+end
 
 
 post '/orders' do

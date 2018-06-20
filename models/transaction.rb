@@ -55,6 +55,15 @@ class Transaction
     return transaction
   end
 
+  def self.transactions_of_order(order_id)
+    sql = "SELECT * FROM transactions
+    WHERE order_id = $1"
+    values = [order_id]
+    transactions_data = SqlRunner.run( sql, values )
+    transactions = map_items(transactions_data)
+    return transactions
+  end
+
   def self.all()
     sql = "SELECT * FROM transactions"
     transactions_data = SqlRunner.run(sql)
