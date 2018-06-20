@@ -31,6 +31,8 @@
 <h2>Items in the Order</h2>
 <% items_in_order = @order.items  %> <form action="/orders/<%=@order.id%>/process" method="post">
 <input class="process-button" type="submit" value="Process The Order"/></form>
+<form action="/orders/<%=@order.id%>/delete" method="post">
+<input class="process-button" type="submit" value="Delete The Order"/></form>
 <table>
 
   <tr>

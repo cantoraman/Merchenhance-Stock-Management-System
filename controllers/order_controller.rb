@@ -77,6 +77,11 @@ post '/orders/:order_id/process' do
   redirect to "/orders"
 end
 
+post '/orders/:order_id/delete' do
+  Order.delete(params['order_id'])
+  redirect to "/orders"
+end
+
 
 post '/orders' do
   Order.new(params).save

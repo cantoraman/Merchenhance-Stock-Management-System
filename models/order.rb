@@ -80,6 +80,18 @@ class Order
     return order
   end
 
+  def self.delete(id)
+    transactions = Transaction.transactions_of_order(id)
+    transactions.each { |transaction| transaction.delete() }
+
+    sql = "DELETE FROM orders
+    WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
+
+
   def self.show_till()
     gain=0
     orders = Order.find_processed()
@@ -91,7 +103,7 @@ class Order
         gain+=(item.price*transaction.amount)
       }
     }
-    return till
+    return gain
   end
 
   def self.process(id)
@@ -118,8 +130,8 @@ class Order
 
   def self.find_processed()
     sql = "SELECT * FROM orders
-    WHERE is_processed = TRUE"
-    order_data = SqlRunner.run(sql).first
+    WHERE is_processed = true"
+    order_data = SqlRunner.run(sql)
     orders = map_items(order_data)
     return orders
   end
