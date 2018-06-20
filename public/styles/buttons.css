@@ -3,6 +3,14 @@
   border: solid 1px mediumaquamarine;
   color: black;
 }
+.button-big{
+  background: linear-gradient(-45deg, tomato, rgb(252, 233, 59));
+  margin: 3em;
+  font-size: 1.25em;
+  text-align: center;
+  border: solid 1px mediumaquamarine;
+  color: black;
+}
 .process-button{
 margin: 1.2em;
 background: linear-gradient(-45deg, rgb(249, 217, 154),rgb(255, 252, 250));

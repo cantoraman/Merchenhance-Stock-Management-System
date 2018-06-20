@@ -124,8 +124,12 @@ class Order
     sql = "SELECT * FROM orders
     WHERE is_processed = false"
     result = SqlRunner.run(sql).first
-    order = Orders.new(result)
+    if result
+    order = Order.new(result)
     return order
+    else
+    return nil
+    end
   end
 
   def self.find_processed()

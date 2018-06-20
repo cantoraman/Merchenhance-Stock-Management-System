@@ -17,13 +17,12 @@ end
 #NEW
 get '/orders/new' do
   @items = Item.all()
-  @orders = Order.all()
-  order = Order.new({"order_date" => DateTime.now,
+  @order = Order.new({"order_date" => DateTime.now,
     "is_sold" => true,
     "is_processed" => false
     })
-  order.save()
-  redirect to '/orders'
+  @order.save()
+  erb(:"orders/new")
 end
 
 #ADD
@@ -49,11 +48,11 @@ get '/orders/:id/view-transactions' do
   erb(:"orders/view-transactions")
 end
 
-post '/orders/:id' do
-  order = Order.new(params)
-  order.update()
-  redirect to "/orders/#{params['id']}"
-end
+# post '/orders/:id' do
+#   order = Order.new(params)
+#   order.update()
+#   redirect to "/orders/#{params['id']}"
+# end
 
 post '/orders/:id/add/:item_id' do
   transaction=Transaction.new({
@@ -83,7 +82,7 @@ post '/orders/:order_id/delete' do
 end
 
 
-post '/orders' do
-  Order.new(params).save
-  redirect to '/orders'
-end
+# post '/orders' do
+#   Order.new(params).save
+#   redirect to '/orders'
+# end

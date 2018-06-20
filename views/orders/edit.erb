@@ -12,6 +12,7 @@
     <th>Manufacturer</th>
   </tr>
   <% for item in @items %>
+  <%if item.stock_level>0  %>
   <tr>
     <td> <a href="/items/<%= item.id %>"><%= item.name %></a>
     </td>
@@ -21,18 +22,21 @@
     <td><%= item.manufacturer_name()%></td>
     <td>
       <form action="/orders/<%=@order.id%>/add/<%=item.id%>" method="post">
-      <input type="number" style="width: 50px;" name="amount" min="1" value="1" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></td>
+      <input type="number" style="width: 50px;" name="amount" min="1" max="<%=item.stock_level%>" value="1" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></td>
   </tr>
+    <%end%>
     <% end %>
 </table>
 </div>
 
 <div class="cart">
 <h2>Items in the Order</h2>
-<% items_in_order = @order.items  %> <form action="/orders/<%=@order.id%>/process" method="post">
+<% items_in_order = @order.items  %>
+<form action="/orders/<%=@order.id%>/process" method="post">
 <input class="process-button" type="submit" value="Process The Order"/></form>
 <form action="/orders/<%=@order.id%>/delete" method="post">
 <input class="process-button" type="submit" value="Delete The Order"/></form>
+
 <table>
 
   <tr>

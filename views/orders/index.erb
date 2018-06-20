@@ -1,39 +1,43 @@
 <h2>Orders</h2>
 
-<h3> <a href="orders/new">New Order</a> </h3>
+
+<% unprocessed_order=Order.find_unprocessed() %>
+<% if unprocessed_order!=nil  %>
+<a class="button-big" href="/orders/<%= unprocessed_order.id %>/edit">Edit & Process Order</a>
+<%else%>
+<a class="button-big" href="/orders/new">New Order</a>
+<%end%>
+
+
 <table>
   <tr>
     <th>Order Number</th>
     <th>Order Date</th>
     <th>Outgoing</th>
-    <th>Processed</th>
     <th>Number of Items</th>
   </tr>
   <% counter=1  %>
   <% for order in @orders %>
-
-  <tr>
-    <th><%=counter%></th>
-    <th><%= order.order_date %></th>
-    <th><% if order.is_sold == "t" %>
-        <%= "Yes"  %>
-        <% else  %>
-        <%= "NO" %>
-        <% end  %>
-    </th>
-    <th><%= order.is_processed=="t" ? "Yes" : "No" %></th>
-    <th><%= order.number_of_items() %></th>
-    <th><% if order.is_processed == "f" %>
-        <div class="button-link">
-        <a class="button-link" href="/orders/<%= order.id %>/edit">Edit & Process Order</a>
+    <% if order.is_processed == "t" %>
+    <tr>
+      <th><%=counter%></th>
+      <th><%= order.order_date %></th>
+      <th><% if order.is_sold == "t" %>
+          <%= "Yes"  %>
+          <% else  %>
+          <%= "NO" %>
+          <% end  %>
+      </th>
+      <th><%= order.number_of_items() %></th>
+      <th>
+          <div class="button-link">
+          <a class="button-link" href="/orders/<%= order.id %>/view-transactions">View Order</a>
         </div>
-      <% else %>
-        <div class="button-link">
-        <a class="button-link" href="/orders/<%= order.id %>/view-transactions">View Order</a>
-      </div>
-      <% end %>
-    </th>
-  </tr>
+      </th>
+    </tr>
+    <% end %>
+
+
     <% counter += 1  %>
     <% end %>
 
