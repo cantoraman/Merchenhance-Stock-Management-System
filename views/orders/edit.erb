@@ -1,5 +1,7 @@
-<h2>Items Available To Order</h2>
+<div class="grid-row">
 
+<div class="opt-list">
+<h2>Items Available To Order</h2>
 <table>
   <tr>
     <th>Name</th>
@@ -11,42 +13,48 @@
   </tr>
   <% for item in @items %>
   <tr>
-    <th> <a href="/items/<%= item.id %>"><%= item.name %></a>
-    </th>
-    <th><%= item.cost %></th>
-    <th><%= item.price %></th>
-    <th><%= item.stock_level %></th>
-    <th><%= item.manufacturer_name()%></th>
-    <th>
+    <td> <a href="/items/<%= item.id %>"><%= item.name %></a>
+    </td>
+    <td><%= item.cost %></td>
+    <td><%= item.price %></td>
+    <td><%= item.stock_level %></td>
+    <td><%= item.manufacturer_name()%></td>
+    <td>
       <form action="/orders/<%=@order.id%>/add/<%=item.id%>" method="post">
-      <input type="number" style="width: 50px;" name="amount" min="0" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></th>
+      <input type="number" style="width: 50px;" name="amount" min="1" value="1" id="amount"/> <br><input type="submit" value="Add Item"/>      </form></td>
   </tr>
     <% end %>
 </table>
+</div>
 
-
-
+<div class="cart">
 <h2>Items in the Order</h2>
-<% items_in_order = @order.items  %>
+<% items_in_order = @order.items  %> <form action="/orders/<%=@order.id%>/process" method="post">
+<input class="process-button" type="submit" value="Process The Order"/></form>
 <table>
+
   <tr>
     <th>Name</th>
-
     <th>Cost(£)</th>
     <th>Price(£)</th>
     <th>Stock Level</th>
     <th>Manufacturer</th>
+    <th>Amount To Order</th>
   </tr>
   <% for item in items_in_order %>
   <tr>
-    <th> <%= item.name %></th>
+    <td> <%= item.name %></td>
 
-    <th><%= item.cost %></th>
-    <th><%= item.price %></th>
-    <th><%= item.stock_level %></th>
-    <th><%= item.manufacturer_name()%></th>
-    <th><form action="/orders/<%=@order.id%>/remove/<%=item.id%>" method="post">
-    <input type="submit" value="Delete Item"/></form></th>
+    <td><%= item.cost %></td>
+    <td><%= item.price %></td>
+    <td><%= item.stock_level %></td>
+    <td><%= item.manufacturer_name()%></td>
+    <td> <%= Transaction.find_in_order(@order.id, item.id).amount%></td>
+    <td><form action="/orders/<%=@order.id%>/remove/<%=item.id%>" method="post">
+    <input type="submit" value="Delete Item"/></form></td>
   </tr>
     <% end %>
 </table>
+</div>
+
+</div>

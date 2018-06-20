@@ -1,7 +1,23 @@
-table, td, th {
-    border: 1px solid black;
+table, th, td{
+  font-family: Roboto;
+  font-size: 0.9em;
 }
 table {
     border-radius: 5px;
     border: 1px groove black;
+     text-align: center;
+}
+th {
+}
+
+
+td{
+  border: 1px solid black;
+  border-radius: 5px;
+ text-align: center;
+}
+
+input[type="number"] {
+text-align: center;
+border-radius: 5px;
 }

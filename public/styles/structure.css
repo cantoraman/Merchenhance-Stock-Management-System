@@ -16,3 +16,26 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-family: 'PT Sans Narrow', sans-serif;
 }
+
+.grid-row{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+.opt-list{
+flex-direction: row;
+align-self: left;
+}
+.cart{
+flex-direction: row;
+align-self: right;
+}
+
+nav{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 10px;
+}

@@ -32,7 +32,11 @@ class Order
   end
 
   def items()
-     sql = "psql"
+     sql = "SELECT items.*
+     FROM items
+     INNER JOIN transactions
+     ON items.id = transactions.item_id
+     WHERE transactions.order_id = $1"
      values = [@id]
      data = SqlRunner.run(sql, values)
      return data.map { |item| Item.new(item) }
