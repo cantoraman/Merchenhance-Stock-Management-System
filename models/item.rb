@@ -42,7 +42,10 @@ class Item
 
   def reduce_stock_level(reduction)
     @stock_level-=reduction
+    p "NEW STOCK LEVEL"
+    p @stock_level
   end
+
   def raise_stock_level(rise)
     @stock_level+=rise
   end

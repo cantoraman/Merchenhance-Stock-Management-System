@@ -30,13 +30,32 @@ class Transaction
     @id = id.to_i
   end
 
+  def update()
+    sql = "UPDATE transactions
+    SET
+    (
+      item_id,
+      order_id,
+      amount
+    ) =
+    (
+      $1, $2, $3
+    )
+    WHERE id = $4"
+    values = [@item_id, @order_id, @amount, @id]
+    SqlRunner.run(sql, values)
+  end
+
+
   def delete()
     sql = "DELETE FROM transactions
     WHERE id = $1"
     values = [@id]
     SqlRunner.run(sql, values)
   end
-
+  def change_amount(difference)
+    @amount+=difference
+  end
 
   def self.find(id)
     sql = "SELECT * FROM transactions
@@ -51,8 +70,12 @@ class Transaction
     WHERE order_id = $1 AND item_id = $2"
     values = [order_id, item_id]
     result = SqlRunner.run(sql, values).first
+    if result != nil
     transaction = Transaction.new(result)
     return transaction
+    else
+    return nil
+    end
   end
 
   def self.transactions_of_order(order_id)

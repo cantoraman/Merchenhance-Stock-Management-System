@@ -82,7 +82,11 @@ class Order
 
   def self.delete(id)
     transactions = Transaction.transactions_of_order(id)
-    transactions.each { |transaction| transaction.delete() }
+    transactions.each { |transaction|
+      item = Item.find(transaction.item_id)
+      item.raise_stock_level(transaction.amount)
+      item.update()
+      transaction.delete() }
 
     sql = "DELETE FROM orders
     WHERE id = $1"
@@ -109,12 +113,6 @@ class Order
   def self.process(id)
     order = Order.find(id)
     transactions = Transaction.transactions_of_order(order.id)
-
-    transactions.map{ |transaction|
-      item=Item.find(transaction.item_id)
-      item.reduce_stock_level(transaction.amount)
-      item.update()
-    }
     order.process_self()
     order.update()
   end

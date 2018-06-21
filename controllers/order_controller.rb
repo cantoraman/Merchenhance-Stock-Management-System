@@ -55,12 +55,18 @@ end
 # end
 
 post '/orders/:id/add/:item_id' do
+  transaction=Transaction.find_in_order(params['id'],params['item_id'])
+  if transaction==nil
   transaction=Transaction.new({
     "item_id" => params['item_id'],
     "order_id" => params['id'],
     "amount" => params['amount']
     })
   transaction.save()
+  else
+  transaction.change_amount(params['amount'].to_i)
+  transaction.update()
+  end
   item = Item.find(params['item_id'])
   item.reduce_stock_level(params['amount'].to_i)
   item.update()
