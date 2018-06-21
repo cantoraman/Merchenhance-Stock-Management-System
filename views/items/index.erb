@@ -23,7 +23,7 @@
     </th>
     <th><%= item.cost %></th>
     <th><%= item.price %></th>
-    <th><%= item.stock_level %></th>
+    <th class="<%= item.stock_report() %>"><%= item.stock_level %></th>
     <th><%= item.manufacturer_name()%></th>
     <th><a href="/items/<%= item.id %>/edit">Edit</a></th>
   </tr>

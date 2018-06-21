@@ -11,13 +11,13 @@
 
   <tr>
 
-    <th><%= @item.name %></th>
-    <th><%= @item.description %></th>
-    <th><%= @item.cost %></th>
-    <th><%= @item.price %></th>
-    <th><%= @item.stock_level %></th>
-    <th><%= @item.manufacturer_name()%></th>
-    <th><a href="/items/<%= @item.id %>/edit">Edit</a></th>
+    <td><%= @item.name %></td>
+    <td><%= @item.description %></td>
+    <td><%= @item.cost %></td>
+    <td><%= @item.price %></td>
+    <td class="<%= @item.stock_report() %>"><%= @item.stock_level %></td>
+    <td><%= @item.manufacturer_name()%></td>
+    <td><a href="/items/<%= @item.id %>/edit">Edit</a></td>
   </form>
   </tr>
 

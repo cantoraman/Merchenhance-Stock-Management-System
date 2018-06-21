@@ -45,7 +45,7 @@
     <th>Name</th>
     <th>Cost(£)</th>
     <th>Price(£)</th>
-    <th>Stock Level</th>
+    <th>House Stock Level</th>
     <th>Manufacturer</th>
     <th>Amount To Order</th>
   </tr>
@@ -55,7 +55,7 @@
 
     <td><%= item.cost %></td>
     <td><%= item.price %></td>
-    <td><%= item.stock_level %></td>
+    <td class="<%= item.stock_report() %>"><%= item.stock_level %></td>
     <td><%= item.manufacturer_name()%></td>
     <td> <%= Transaction.find_in_order(@order.id, item.id).amount%></td>
     <td><form action="/orders/<%=@order.id%>/remove/<%=item.id%>" method="post">
