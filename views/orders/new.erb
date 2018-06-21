@@ -19,7 +19,7 @@
     </td>
     <td><%= item.cost %></td>
     <td><%= item.price %></td>
-    <td><%= item.stock_level %></td>
+    <td class="<%= item.stock_report() %>"><%= item.stock_level %></td>
     <td><%= item.manufacturer_name()%></td>
     <td>
       <form action="/orders/<%=@order.id%>/add/<%=item.id%>" method="post">

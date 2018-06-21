@@ -50,6 +50,17 @@ class Item
     @stock_level+=rise
   end
 
+  def stock_report()
+    case
+    when stock_level>stock_medium
+      return "stock-green"
+    when stock_medium>stock_level && stock_level>stock_low
+      return "stock-orange"
+    when stock_level<stock_low
+      return "stock-red"
+    end
+  end
+
   def update()
     sql = "UPDATE items
     SET
