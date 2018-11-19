@@ -1,8 +1,23 @@
 # Merchenhance
 Merchenchence / Merchant Stock Management System Web App
 
-Designed to help a store's stock levels with stock limit warnings, order processing and restocking features.
+## Synopsis
+Tracks the current warehouse stock, displays colour coded warning on critical stock levels, records the resupply and sale transactions, displays projected markup of the whole stock; implements an interactive shopping cart system for bulk sell/buy orders, relies on RESTful routes
 
-Ruby, Maven, Sinatra, PostresSQL, HTML/CSS
+## Built with
+* Ruby
+* Sinatra
+* HTML
+* CSS
+* PostgreSQL
 
-Relies on Restful Routes; includes interactive shopping cart system despite project briefs limitations
+## Installing
+
+- Download & unpack folder
+
+- Terminal
+  --CD into folder
+  --ruby app.rb
+
+-Browser
+ --http://localhost:4567
