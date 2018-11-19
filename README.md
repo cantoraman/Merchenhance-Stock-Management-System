@@ -16,8 +16,7 @@ Tracks the current warehouse stock, displays colour coded warning on critical st
 - Download & unpack folder
 
 - Terminal
-  --CD into folder
-  --ruby app.rb
+- CD into folder
+- ruby app.rb
 
--Browser
- --http://localhost:4567
+- Visit http://localhost:4567
